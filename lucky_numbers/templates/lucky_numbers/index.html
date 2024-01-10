@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .lottery-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lottery-ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        .power-ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #c04000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+    </style>
+    <title>Lottery Balls</title>
+</head>
+
+<body>
+    <div class="lottery-container">
+        <div class="lottery-ball" id="lottery_number1">{{ lottery_number1 }}</div>
+        <div class="lottery-ball" id="lottery_number2">{{ lottery_number2 }}</div>
+        <div class="lottery-ball" id="lottery_number3">{{ lottery_number3 }}</div>
+        <div class="lottery-ball" id="lottery_number4">{{ lottery_number4 }}</div>
+        <div class="power-ball" id="lottery_number5">{{ lottery_number5 }}</div>
+        <button id="generateButton">Generate New Numbers</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#generateButton').click(function(){
+                $.ajax({
+                    type: 'GET',
+                    url: '/hello/',  // Replace with the actual URL to your Django view
+                    success: function(response){
+                        // Update the displayed numbers
+                        $('#lottery_number1').text(response.lucky_numbers[0]);
+                        $('#lottery_number2').text(response.lucky_numbers[1]);
+                        $('#lottery_number3').text(response.lucky_numbers[2]);
+                        $('#lottery_number4').text(response.lucky_numbers[3]);
+                        $('#lottery_number5').text(response.lucky_numbers[4]);
+                    },
+                    error: function(error){
+                        console.log('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>

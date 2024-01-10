@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+env36/
+env37/
+env38/
+env39/
+*.egg-info/
+dist/
+build/
+
+# Django
+*.log
+db.sqlite3
+
+# Secret key
+secret_key.txt
+
+# Media files
+media/
+
+# Static files
+staticfiles/
+
+# IDE files
+.vscode/
+.idea/
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Database
+*.db
+*.sqlite3
+
+# Local development settings
+local_settings.py
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Editor-specific files
+*.sublime-workspace
+*.sublime-project
+*.vscode
